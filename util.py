@@ -33,7 +33,7 @@ def get_pulse_gates(wires, T_single=T_single, T_CR=T_CR, qubit_freq=[6.509, 5.96
     qubit_freq = 2 * np.pi * np.array(qubit_freq)
 
     H0 = qml.dot(-0.5*qubit_freq, [qml.PauliZ(i) for i in wires])
-    H0 += 2*np.pi*0.0123 * (qml.PauliX(wires[0]) @ qml.PauliX(wires[1]) + qml.PauliY(wires[0]) @ qml.PauliY(wires[1]))
+    H0 += 2 * np.pi * 0.0123 * (qml.PauliX(wires[0]) @ qml.PauliX(wires[1]) + qml.PauliY(wires[0]) @ qml.PauliY(wires[1]))
 
     H_single = copy(H0)
     for q,i in enumerate(wires):
