@@ -4,7 +4,7 @@ This is then optimized using the analytic gradient (=generator method) or stocha
 Note that the SPS optimization is very slow and may take up to 4 hours per random seed (16 random seeds in this script).
 Since each optimization is relatively low dimensional, we can utilize multiprocessing to run them embarrassingly in parallel.
 This python feature is relatively new and may not work with your system. The script was run on a aws EC2 c5.2xlarge instances 
-with 8 CPUs and 16GB of RAM.
+with 8 CPUs and 16GB of RAM..
 """
 import pennylane as qml
 import numpy as np
