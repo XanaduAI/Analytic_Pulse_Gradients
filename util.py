@@ -157,3 +157,32 @@ def _timeit(callable, *args, reps=10):
         dts.append(dt)
     
     return dt_jit, np.mean(dts), np.std(dts)
+
+def grad_estimate(res, jac, timespan, seed=92, n_tauss=None, reps=100, importance=True):
+
+    if n_tauss is None:
+        n_tauss = [5, 10, 20, 40, 80, 160]
+
+    key = jax.random.PRNGKey(seed)
+
+    grad_estimate = []
+    for _ in range(reps):
+        for n_taus in n_tauss:
+            for param_i in range(jac.shape[-1]):
+                grad_i = jnp.array(0.)
+                for j in range(jac.shape[1]):
+                    if not jnp.isclose(jnp.sum(jac[:, j, param_i]), 0.):
+                        key, subkey = jax.random.split(key)
+                        if importance:
+                            p = jnp.abs(jac[:, j, param_i])
+                            p = p / jnp.mean(p)
+                            term_j = jax.random.choice(subkey, res[:, j, param_i]/p, shape=(n_taus,), p=p)
+                        else:
+                            term_j = jax.random.choice(subkey, res[:, j, param_i], shape=(n_taus,))
+                        
+                        term_j = jnp.mean(term_j)*timespan
+                        grad_i += term_j
+                
+                grad_estimate.append(grad_i)
+    
+    return np.array(grad_estimate).reshape((reps, len(n_tauss), -1))

@@ -14,10 +14,12 @@ import jax
 jax.config.update("jax_enable_x64", True)
 
 from copy import copy
-
-from util import run_opt, get_pulse_gates, _timeit
 import concurrent.futures
 import multiprocessing as mp
+
+import sys
+sys.path.append('../')
+from util import run_opt, get_pulse_gates, _timeit
 
 # Molecular Hamiltonian from quantum datasets https://pennylane.ai/datasets/qchem/h4-molecule
 bond_distance = 1.0
