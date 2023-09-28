@@ -12,8 +12,8 @@ from copy import copy
 
 from datetime import datetime
 
-T_single = 50.
-T_CR = 200.
+T_single = 20.
+T_CR = 100.
 
 def drive_field(T, wdrive):
     def wrapped(p, t):

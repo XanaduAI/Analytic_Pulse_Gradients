@@ -13,7 +13,6 @@ import jax
 
 jax.config.update("jax_enable_x64", True)
 
-from copy import copy
 import concurrent.futures
 import multiprocessing as mp
 

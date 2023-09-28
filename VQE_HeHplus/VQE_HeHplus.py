@@ -6,16 +6,6 @@ import optax
 
 jax.config.update("jax_enable_x64", True)
 
-from time import time
-
-import matplotlib.pyplot as plt
-
-from functools import partial
-from datetime import datetime
-
-from util import grad_estimate
-import tequila as tq
-
 bond_distance = 1.78
 data = qml.data.load("qchem", molname="HeH+", basis="STO-3G", bondlength=bond_distance)[0]
 H_obj = data.tapered_hamiltonian
@@ -137,7 +127,7 @@ def run_opt(value_and_grad, theta, n_epochs=100):
     return theta, energy, gradients
 
 for seed in np.arange(100):
-    print(f"seed {seed} / 100")
+    print(f"seed {seed+1} / 100")
     key = jax.random.PRNGKey(seed)
     theta0 = jax.random.normal(key, shape=(n_wires, 2*dLeg))
 
