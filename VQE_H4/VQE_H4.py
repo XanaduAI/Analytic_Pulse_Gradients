@@ -1,6 +1,6 @@
 """
 Running partial VQE on H4. Partial VQE in the sense that we take a fixed Ansatz but replace part of it with a pulse gate.
-This is then optimized using the analytic gradient (=generator method) or stochastic parameter shift rules.
+This is then optimized using the analytic gradient (=ODEgen) or stochastic parameter shift rules.
 Note that the SPS optimization is very slow and may take up to 4 hours per random seed (16 random seeds in this script).
 Since each optimization is relatively low dimensional, we can utilize multiprocessing to run them embarrassingly in parallel.
 This python feature is relatively new and may not work with your system. The script was run on a aws EC2 c5.2xlarge instances
