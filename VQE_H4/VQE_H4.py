@@ -124,7 +124,7 @@ def qnode0(params):
     return qml.expval(H_obj)
 
 num_split_times = 20
-qnode_sps = qml.QNode(qnode0, dev_jax, interface="jax", diff_method=qml.gradients.stoch_pulse_grad, use_broadcasting=True, num_split_times=num_split_times)
+qnode_sps = qml.QNode(qnode0, dev_jax, interface="jax", diff_method=qml.gradients.stoch_pulse_grad, num_split_times=num_split_times)
 value_and_grad_sps = jax.value_and_grad(qnode_sps)
 _ = value_and_grad_sps(jnp.zeros((n_params, tbins * 2))) # run once, not sure why but otherwise multiprocessing gets stuck, probably something about jax cache
 
