@@ -92,8 +92,7 @@ cost_gen1 = qml.QNode(
     dev, 
     interface="jax", 
     diff_method=qml.gradients.pulse_odegen, 
-    atol=1., 
-    use_broadcasting=True
+    atol=1.,
 )
 cost_jax = qml.QNode(circuit, dev, interface="jax")
 
