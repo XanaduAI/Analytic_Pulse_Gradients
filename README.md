@@ -1,6 +1,6 @@
 # Evaluating analytic gradients of pulse programs on quantum computers
 
-Code supporting [arXiv:2309.16756](https://arxiv.org/abs/2309.16756) "Evaluating analytic gradients of pulse programs on quantum computers" by Korbinian Kottmann and Nathan Killorna (2023).
+Code supporting [arXiv:2309.16756](https://arxiv.org/abs/2309.16756) "Evaluating analytic gradients of pulse programs on quantum computers" by Korbinian Kottmann and Nathan Killornan (2023).
 
   * Fig. 2: [Single_qubit_drive.ipynb](Single_qubit_drive.ipynb)
   * Fig. 3: [Single_qubit_vary_drive_freq.ipynb](Single_qubit_vary_drive_freq.ipynb)
